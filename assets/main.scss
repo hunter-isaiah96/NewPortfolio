@@ -1,0 +1,71 @@
+#app {
+  background-color: #fff;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&display=swap');
+h1 {
+  font-family: 'Raleway', sans-serif;
+}
+
+.menu {
+  overflow: inherit !important;
+  border: none !important;
+  &.closed {
+    .menu-button {
+      right: -38px;
+      span {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  .menu-button {
+    min-width: 38px !important;
+    max-height: 38px;
+    position: fixed;
+    bottom: 90%;
+    right: 0;
+    z-index: 10000;
+    transition: all 0.3s ease;
+    span {
+      transition: all 0.3s ease;
+    }
+  }
+}
+
+.full-height {
+  position: relative;
+  height: 100vh;
+  min-height: 100vh;
+}
+
+#home-svg {
+  position: absolute;
+  bottom: 0;
+  fill: var(--v-secondary-base);
+}
+
+.bordered-img {
+  border: 10px solid rgba(0, 0, 0, 0.3);
+}
+
+svg {
+  fill: #fff;
+}
+
+.scroll-wheel {
+  animation: scroll 1.5s ease infinite;
+}
+
+@keyframes scroll {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  33% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(40%);
+  }
+}

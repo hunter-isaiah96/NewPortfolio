@@ -2,6 +2,10 @@ import colors from 'vuetify/es5/util/colors'
 
 export default {
   mode: 'universal',
+  server: {
+    // default: 3000
+    host: '0.0.0.0' // default: localhost
+  },
   /*
    ** Headers of the page
    */
@@ -26,11 +30,11 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['~/assets/main.scss'],
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [{ src: '~/plugins/vue-typer', mode: 'client' }],
   /*
    ** Nuxt.js dev-modules
    */
@@ -53,9 +57,18 @@ export default {
    */
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    treeShake: true,
     theme: {
       themes: {
-        dark: {}
+        light: {
+          primary: colors.red.darken1, // #E53935
+          secondary: colors.red.lighten4, // #FFCDD2
+          accent: colors.indigo.base // #3F51B5
+        }
+      },
+      dark: true,
+      options: {
+        customProperties: true
       }
     }
   },
