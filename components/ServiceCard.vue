@@ -2,8 +2,10 @@
   <div>
     <v-card class="service-card py-6 pl-12" flat tile>
       <h4 class="pb-6">0{{ index }}</h4>
-      <h2 class="mt-4">{{ title }}</h2>
-      <p class="subtitle-1 mt-4">{{ description }}</p>
+      <div class="mr-12">
+        <h2 class="mt-4">{{ title }}</h2>
+        <p class="subtitle-1 mt-4">{{ description }}</p>
+      </div>
     </v-card>
   </div>
 </template>

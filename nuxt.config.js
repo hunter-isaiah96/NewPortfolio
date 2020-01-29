@@ -34,7 +34,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [{ src: '~/plugins/vue-typer', mode: 'client' }],
+  plugins: [],
   /*
    ** Nuxt.js dev-modules
    */
@@ -59,13 +59,6 @@ export default {
     customVariables: ['~/assets/variables.scss'],
     treeShake: true,
     theme: {
-      themes: {
-        light: {
-          primary: colors.red.darken1, // #E53935
-          secondary: colors.red.lighten4, // #FFCDD2
-          accent: colors.indigo.base // #3F51B5
-        }
-      },
       dark: true,
       options: {
         customProperties: true

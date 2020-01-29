@@ -11,7 +11,7 @@
     <v-navigation-drawer
       class="px-0 px-sm-12 menu black"
       :class="{ closed: !drawer }"
-      v-model="drawer"
+      :value="drawer"
       :width="this.$vuetify.breakpoint.name === 'xs' ? 250 : 350"
       app
     >
@@ -66,7 +66,6 @@ export default {
   data() {
     return {
       clipped: false,
-      drawer: false,
       menu_items: [
         {
           title: 'Home',
@@ -103,17 +102,16 @@ export default {
         }
       ]
     }
+  },
+  computed: {
+    drawer: {
+      get() {
+        return this.$store.state.drawer.drawer
+      },
+      set(value) {
+        this.$store.commit('drawer/toggle', value)
+      }
+    }
   }
-  // computed: {
-  //   tab: {
-  //     get() {
-  //       return this.menu_items.findIndex(item => item.to === )
-  //     },
-  //     set(newName) {
-  //       return newName
-  //     }
-  //     // return this.menu_items.findIndex(item => item.)
-  //   }
-  // }
 }
 </script>
