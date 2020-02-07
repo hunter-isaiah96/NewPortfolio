@@ -5,15 +5,13 @@
         <v-toolbar-title class="text-uppercase font-weight-black">
           <nuxt-link class="black--text no-underline" to="/">Isaiah Hunter</nuxt-link>
         </v-toolbar-title>
-
         <v-spacer></v-spacer>
         <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       </v-container>
     </v-app-bar>
-
     <v-navigation-drawer v-model="drawer" width="50%" absolute temporary>
       <v-list class="pt-12" flat nav>
-        <v-list-item-group v-model="item" color="primary">
+        <v-list-item-group color="primary">
           <v-list-item
             v-for="(item, index) in menu_items"
             :key="index"

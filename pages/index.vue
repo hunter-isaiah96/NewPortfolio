@@ -1,5 +1,5 @@
 <template>
-  <v-container class="pa-0">
+  <v-container class="pa-0" style="max-width: 1200px;">
     <v-container class="d-flex align-center justify-center header">
       <div class="text-center" style="padding-bottom: 64px;">
         <section-header title="Isaiah Hunter" caption="Hello, I'm"></section-header>
@@ -27,20 +27,10 @@
     </v-container>
     <v-container>
       <v-row>
-        <v-col>
-          <svg
-            width="150px"
-            height="150px"
-            viewBox="0 0 200 200"
-            xmlns="http://www.w3.org/2000/svg"
-            version="1.1"
-          >
-            <polygon
-              style="fill:#000000"
-              points="148,183.138438763306 52,183.138438763306 4,100 52,16.8615612366939 148,16.8615612366939 196,99.9999999999999 148,183.138438763306"
-            />
-            <v-icon color="white">mdi-truck-fast</v-icon>
-          </svg>
+        <v-col cols="4" v-for="(i, index) in 6" :key="index">
+          <div class="hexagon">
+            <v-icon class="hex-icon" size="40" color="white">mdi-truck-fast-outline</v-icon>
+          </div>
         </v-col>
       </v-row>
     </v-container>
@@ -56,6 +46,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$hexcolor: black;
 .header {
   position: relative;
   height: calc(100vh - 64px);
@@ -92,39 +83,38 @@ export default {
   animation-delay: 3.7s;
 }
 
-.hexagon-wrapper {
-  text-align: center;
-  margin: 20px;
+.hexagon {
   position: relative;
-  display: inline-block;
+  width: 90px;
+  height: 51.96px;
+  background-color: $hexcolor;
+  margin: 25.98px 0;
+  .hex-icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
-.hexagon {
-  height: 100%;
-  width: calc(100% * 0.57735);
-  display: inline-block;
+.hexagon:before,
+.hexagon:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  border-left: 45px solid transparent;
+  border-right: 45px solid transparent;
 }
 
 .hexagon:before {
-  position: absolute;
-  top: 0;
-  right: calc((100% / 2) - ((100% * 0.57735) / 2));
-  background-color: inherit;
-  height: inherit;
-  width: inherit;
-  content: '';
-  transform: rotateZ(60deg);
+  bottom: 100%;
+  border-bottom: 25.98px solid $hexcolor;
 }
 
 .hexagon:after {
-  position: absolute;
-  top: 0;
-  right: calc((100% / 2) - ((100% * 0.57735) / 2));
-  background-color: inherit;
-  height: inherit;
-  width: inherit;
-  content: '';
-  transform: rotateZ(-60deg);
+  top: 100%;
+  width: 0;
+  border-top: 25.98px solid $hexcolor;
 }
 
 @keyframes mouse {
