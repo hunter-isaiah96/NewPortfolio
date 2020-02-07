@@ -1,58 +1,31 @@
 <template>
-  <v-app dark>
-    <v-toolbar
-      class="d-block d-sm-none"
-      color="black"
-      style="position: fixed; z-index: 2;"
-      width="100%"
-    >
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-    </v-toolbar>
-    <v-navigation-drawer
-      class="px-0 px-sm-12 menu black"
-      :class="{ closed: !drawer }"
-      :value="drawer"
-      :width="this.$vuetify.breakpoint.name === 'xs' ? 250 : 350"
-      app
-    >
-      <v-btn
-        class="menu-button primary pa-0 d-none d-sm-block"
-        @click="drawer = !drawer"
-        :ripple="false"
-        text
-        tile
-      >
-        <v-icon color="white">mdi-chevron-left</v-icon>
-      </v-btn>
-      <v-img :src="require('../assets/ih.svg')" class="my-12" contain></v-img>
-      <v-list>
-        <div v-for="(item, i) in menu_items" :key="i">
-          <v-list-group v-if="item.sub" no-action>
-            <template v-slot:activator>
-              <v-list-item-content>
-                <v-list-item-title>{{ item.title }}</v-list-item-title>
-              </v-list-item-content>
-            </template>
-            <v-list-item
-              v-for="(sub, index) in item.sub"
-              :key="index"
-              :to="sub.to"
-              router
-              exact
-              link
-            >
-              <v-list-item-content>
-                <v-list-item-title v-text="sub.title" />
-              </v-list-item-content>
-            </v-list-item>
-          </v-list-group>
-          <v-list-item :to="item.to" router exact v-else>
-            <v-list-item-content>
-              <v-list-item-title v-text="item.title" />
-            </v-list-item-content>
+  <v-app>
+    <v-app-bar max-height="64" flat>
+      <v-container class="d-flex align-center">
+        <v-toolbar-title class="text-uppercase font-weight-black">
+          <nuxt-link class="black--text no-underline" to="/">Isaiah Hunter</nuxt-link>
+        </v-toolbar-title>
+
+        <v-spacer></v-spacer>
+        <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+      </v-container>
+    </v-app-bar>
+
+    <v-navigation-drawer v-model="drawer" width="50%" absolute temporary>
+      <v-list class="pt-12" flat nav>
+        <v-list-item-group v-model="item" color="primary">
+          <v-list-item
+            v-for="(item, index) in menu_items"
+            :key="index"
+            class="nav-item mb-6"
+            :class="{ animate: drawer }"
+            @click="drawer = !drawer"
+          >
+            <v-list-item-title>
+              <h1 class="display-2 font-weight-light text-uppercase">{{item.title}}</h1>
+            </v-list-item-title>
           </v-list-item>
-          <v-divider></v-divider>
-        </div>
+        </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
     <v-content>
@@ -63,6 +36,7 @@
 
 <script>
 export default {
+  asyncData() {},
   data() {
     return {
       clipped: false,
@@ -73,28 +47,19 @@ export default {
         },
         {
           title: 'Blog',
-          to: '/inspire'
+          to: '/blog'
         },
         {
           title: 'Disciplines',
-          sub: [
-            {
-              title: 'Code',
-              to: '/discipline/code'
-            },
-            {
-              title: 'Design',
-              to: '/discipline/design'
-            }
-          ]
+          to: '/disciplines'
         },
         {
           title: 'Projects',
-          to: '/inspire'
+          to: '/projects'
         },
         {
           title: 'Tech',
-          to: '/inspire'
+          to: '/tech'
         },
         {
           title: 'About',
@@ -115,3 +80,21 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+.animate {
+  &.nav-item {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.nav-item {
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: all 0.3s ease;
+  @for $i from 1 through 6 {
+    &:nth-child(#{$i}) {
+      transition-delay: #{$i * 0.1}s;
+    }
+  }
+}
+</style>
