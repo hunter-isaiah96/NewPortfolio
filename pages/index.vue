@@ -27,9 +27,15 @@
     </v-container>
     <v-container>
       <v-row>
-        <v-col cols="4" v-for="(i, index) in 6" :key="index">
-          <div class="hexagon">
-            <v-icon class="hex-icon" size="40" color="white">mdi-truck-fast-outline</v-icon>
+        <v-col class="mb-12" cols="4" v-for="(i, index) in 6" :key="index">
+          <div class="d-flex align-center justify-center">
+            <div class="hexagon">
+              <v-icon class="hex-icon" size="40" color="white">mdi-truck-fast-outline</v-icon>
+            </div>
+          </div>
+          <div class="text-center">
+            <h3 class="my-3">Fast Delivery</h3>
+            <p>This is just a little bit of text explaining everything about myself and the technologies I use in my day to day web application production.</p>
           </div>
         </v-col>
       </v-row>
@@ -89,11 +95,12 @@ $hexcolor: black;
   height: 51.96px;
   background-color: $hexcolor;
   margin: 25.98px 0;
+  transform: rotate(-30deg);
   .hex-icon {
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) rotate(30deg);
   }
 }
 
